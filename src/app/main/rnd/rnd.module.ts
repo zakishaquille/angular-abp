@@ -24,6 +24,7 @@ import { InputMaskComponent } from 'app/main/rnd/input-mask/input-mask.component
 import { InputMaskDirective } from 'app/main/share/input-mask.directive';
 import { DatePickerDirective } from 'app/main/share/datepicker.directive';
 import { ShareModule } from 'app/main/share/share.module';
+import { FormControlComponent } from 'app/main/rnd/form-control/form-control.component';
 
 // tolong dipisah importnya, antara component buatan, dan component template
 // komponent buatan
@@ -60,6 +61,8 @@ import { ShareModule } from 'app/main/share/share.module';
         CleanModalComponent,
         CleanModalModalComponent,
         InputMaskComponent,
+        FormControlComponent,
+
         InputMaskDirective,
         DatePickerDirective
     ]

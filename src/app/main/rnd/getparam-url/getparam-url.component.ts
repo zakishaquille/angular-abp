@@ -39,6 +39,6 @@ export class GetParamUrlComponent extends AppComponentBase {
     }
 
     gotoDetail(paramID: number): void {
-        this.router.navigate(['app/main/rnd/getparamUrl/detail', paramID]);
+        this.router.navigate(['app/main/rnd/getparam-url/detail', paramID]);
     }
 }
