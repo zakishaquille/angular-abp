@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import * as moment from 'moment';
 
@@ -6,8 +6,9 @@ import * as moment from 'moment';
   templateUrl: './form-datepicker.component.html'
 })
 export class FormDatepickerComponent extends AppComponentBase  implements OnInit {
-  
-  dateSelected: any;
+
+  datepickSelected: any;
+  datetimepickSelected: any;
 
   constructor(
     injector: Injector,) 
@@ -16,6 +17,9 @@ export class FormDatepickerComponent extends AppComponentBase  implements OnInit
   }
 
   ngOnInit() {
-    
+  }
+
+  save(): void {
+    console.log(this.datepickSelected + " "+ this.datetimepickSelected);
   }
 }
