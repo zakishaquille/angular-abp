@@ -1,60 +1,37 @@
 import { AppComponentBase } from 'shared/common/app-component-base';
 
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, Injector } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: ".m-grid__item.m-grid__item--fluid.m-wrapper",
     templateUrl: "./input-mask.component.html",
     encapsulation: ViewEncapsulation.None,
 })
-export class InputMaskComponent extends AppComponentBase implements OnInit, AfterViewInit {
+export class InputMaskComponent extends AppComponentBase implements OnInit {
 
-    editForm: FormGroup;
+    customDateVar: any;
     active: boolean;
-    customDate: FormControl;
-    customPlaceholder: FormControl;
-    phoneNumber: FormControl;
-    exptyPlaceholder: FormControl;
-    repeatingMask: FormControl;
-    rightAlign: FormControl;
-    currency: FormControl;
-    ipAddress: FormControl;
-    emailAddress: FormControl;
     inputMasks: any[];
+    private input: MSInputDto;
 
     constructor(
       injector: Injector,
-      private _fb: FormBuilder,
     ) {
       super(injector)
-      this.editForm = _fb.group({
-        'customDate': [null],
-        'customPlaceholder': [null],
-        'phoneNumber': [null],
-        'exptyPlaceholder': [null],
-        'repeatingMask': [null],
-        'rightAlign': [null],
-        'currency': [null],
-        'ipAddress': [null],
-        'emailAddress': [null],
-      })
       this.active = true
       this.inputMasks = []
     }
 
     ngOnInit() {
+      this.input = new MSInputDto(); //this line for init input variable
+
       for(let i = 1 ; i <= 8 ; i++) {
         this.inputMasks.push(eval("this.getInputMask"+i+"()"));
       }
     }
-    
-    ngAfterViewInit() {
-      
-    }
 
     save() {
-      console.log(this.editForm.value);
+      console.log(this.input);
     }
 
     getInputMask1() {
@@ -117,4 +94,17 @@ export class InputMaskComponent extends AppComponentBase implements OnInit, Afte
         }
       }
     }
+}
+
+//This class is represent of DTO(for this demo only, you don't need to create this class in real development)
+class MSInputDto {
+  customDate: any;
+  customPlaceholder: any;
+  phoneNumber: any;
+  exptyPlaceholder: any;
+  repeatingMask: any;
+  rightAlign: any;
+  currency: any;
+  ipAddress: any;
+  emailAddress: any;
 }

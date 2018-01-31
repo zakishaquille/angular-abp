@@ -28,7 +28,7 @@ export class FormControlComponent extends AppComponentBase implements OnInit {
     }
 
     ngOnInit(): void {
-        this.model = new MSInputDto();
+        this.model = new MSInputDto(); //this line for init model variable
     }
 
     save(): void {
