@@ -19,6 +19,7 @@ import { AppLocalizationService } from '@app/shared/common/localization/app-loca
 import { AppNavigationService } from '@app/shared/layout/nav/app-navigation.service';
 import { DataTableModule } from 'primeng/primeng';
 import { PaginatorModule } from 'primeng/primeng';
+import { ValidationService } from 'app/shared/common/share/validation.service';
 
 @NgModule({
     imports: [
@@ -48,7 +49,8 @@ import { PaginatorModule } from 'primeng/primeng';
     providers: [
         DateTimeService,
         AppLocalizationService,
-        AppNavigationService
+        AppNavigationService,
+        ValidationService
     ]
 })
 export class AppCommonModule {
