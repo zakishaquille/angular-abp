@@ -11,17 +11,16 @@ export class ControlMessageComponent implements OnInit {
 
     private component: FormControl;
     private errorMessage: string;
-    private formComponent;
 
     constructor(private el: ElementRef) { }
 
     ngOnInit(): void {
         let componentName: string;
         let inputElement = null;
-        this.formComponent = this.el.nativeElement.parentElement.parentElement.getAttribute('formComponent');
+        let formComponent = this.el.nativeElement.parentElement.parentElement.getAttribute('formComponent');
 
-        if (this.formComponent !== null) {
-            inputElement = this.el.nativeElement.parentElement.querySelector(this.formComponent);
+        if (formComponent !== null) {
+            inputElement = this.el.nativeElement.parentElement.querySelector(formComponent);
         } else {
             inputElement = this.el.nativeElement.parentElement.querySelector('input');
         }
@@ -51,13 +50,20 @@ export class ControlMessageComponent implements OnInit {
 
     onStatusChange(status: string, dirty: boolean): void {
         let cl = this.el.nativeElement.classList;
+        let labelElement = null;
+        let labelVal: string = 'This field';
+
+        labelElement = this.el.nativeElement.parentElement.parentElement.querySelector('label');
+        if (labelElement) {
+            labelVal = labelElement.innerText.slice('*', -1);;
+        }
         
         if (status === 'VALID' && dirty) {
             this.errorMessage = null;
         } else if (status === 'INVALID' && dirty) {
             for (let propertyName in this.component.errors) {
                 if (this.component.errors.hasOwnProperty(propertyName) && this.component.dirty) {
-                    this.errorMessage = ValidationService.getValidatorErrorMessage(propertyName, this.component.errors[propertyName]);
+                    this.errorMessage = ValidationService.getValidatorErrorMessage(propertyName, this.component.errors[propertyName], labelVal);
                 }
             }
         } else {
