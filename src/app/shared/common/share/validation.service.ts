@@ -12,7 +12,9 @@ export class ValidationService {
             'num'       : `Please enter only digits.`,
         };
 
-        return config[validatorName];
+        let errorMessage: string = config[validatorName] ? config[validatorName] : `${label} invalid`;
+            
+        return errorMessage;
     }
 
     static alphaNumValidator(input) {
