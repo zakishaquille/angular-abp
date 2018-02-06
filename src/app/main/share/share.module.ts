@@ -14,6 +14,8 @@ import { ButtonModule } from 'primeng/primeng';
 import { InputMaskDirective } from "app/main/share/input-mask.directive";
 import { FormControlStyleDirective } from "app/main/share/form-control-style.directive";
 import { ControlMessageComponent } from "app/main/share/control-message.component";
+import { CurrencyMaskModule } from "app/main/share/ng2-currency-mask/currency-mask.module";
+import { CurrencyMaskDirective } from "app/main/share/ng2-currency-mask/currency-mask.directive";
 
 @NgModule({
         imports: [
@@ -24,7 +26,8 @@ import { ControlMessageComponent } from "app/main/share/control-message.componen
                 UtilsModule,
                 CountoModule,
                 EasyPieChartModule,
-                SpinnerModule, EditorModule, DropdownModule, ButtonModule
+                SpinnerModule, EditorModule, DropdownModule, ButtonModule,
+                CurrencyMaskModule
         ],
         declarations: [
                 InputMaskDirective,
@@ -37,6 +40,7 @@ import { ControlMessageComponent } from "app/main/share/control-message.componen
                 FormControlStyleDirective,
 
                 ControlMessageComponent,
+                CurrencyMaskDirective
         ]
 })
 
