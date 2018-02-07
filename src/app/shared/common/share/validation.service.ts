@@ -18,7 +18,7 @@ export class ValidationService {
     }
 
     static alphaNumValidator(input) {
-        let regex = new RegExp(/^[a-zA-Z0-9]*$/);
+        let regex = new RegExp(/^[a-zA-Z0-9_-]+( [a-zA-Z0-9_-]+)*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
@@ -27,7 +27,7 @@ export class ValidationService {
     }
 
     static alphaValidator(input) {
-        let regex = new RegExp(/^[a-zA-Z]+$/);
+        let regex = new RegExp(/^[a-zA-Z_-]+( [a-zA-Z_-]+)*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
@@ -36,7 +36,7 @@ export class ValidationService {
     }
 
     static numValidator(input) {
-        let regex = new RegExp(/^[0-9]+$/);
+        let regex = new RegExp(/^[0-9]*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
