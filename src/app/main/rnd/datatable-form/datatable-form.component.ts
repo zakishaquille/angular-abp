@@ -2,7 +2,7 @@ import { Component, Injector } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { InputPointPctDto, MsSchemaServiceProxy } from 'shared/service-proxies/service-proxies';
+// import { InputPointPctDto, MsSchemaServiceProxy } from 'shared/service-proxies/service-proxies';
 
 @Component({
     templateUrl: './datatable-form.component.html',
@@ -10,7 +10,7 @@ import { InputPointPctDto, MsSchemaServiceProxy } from 'shared/service-proxies/s
 })
 
 export class DatatableFormComponent extends AppComponentBase {
-    public list: InputPointPctDto[];
+    // public list: InputPointPctDto[];
     public myForm: FormGroup;
     memberStatusList: any[];
     pointTypeList: any[];
@@ -21,10 +21,10 @@ export class DatatableFormComponent extends AppComponentBase {
 
     constructor(
         injector: Injector,
-        private _msSchemaServiceProxy: MsSchemaServiceProxy,
+        // private _msSchemaServiceProxy: MsSchemaServiceProxy,
     ) {
         super(injector);
-        this.list = [];
+        // this.list = [];
         this.memberStatusList = [
             {label:'', value:null },            
             {label:'New York', value:{id:1, name: 'New York', code: 'NY'}},
@@ -55,34 +55,34 @@ export class DatatableFormComponent extends AppComponentBase {
     }
 
     ngOnInit() {
-        this._msSchemaServiceProxy.getAllMsSchema(1, '', 100, 0).subscribe(result=>{
-            for(var i = 0 ; i < result.items.length ; i++) {
-                let option = {label: result.items[i]['scmName'], value:{id: result.items[i]['schemaID'], name: result.items[i]['scmName']}};
-                this.schemaList.push(option);
-            }
-        }, err=>{
-            console.error(err)
-        });
+        // this._msSchemaServiceProxy.getAllMsSchema(1, '', 100, 0).subscribe(result=>{
+        //     for(var i = 0 ; i < result.items.length ; i++) {
+        //         let option = {label: result.items[i]['scmName'], value:{id: result.items[i]['schemaID'], name: result.items[i]['scmName']}};
+        //         this.schemaList.push(option);
+        //     }
+        // }, err=>{
+        //     console.error(err)
+        // });
     }
         
     getPointPercentages(): void { 
-        this.primengDatatableHelper.records = this.list;
-        this.primengDatatableHelper.totalRecordsCount = this.list.length;
+        // this.primengDatatableHelper.records = this.list;
+        // this.primengDatatableHelper.totalRecordsCount = this.list.length;
     }
 
     createPointPercentage(): void {
-        const input = new InputPointPctDto();
-        input.schemaID = 0;  
-        this.list =  [ ...this.list, input];
-        this.primengDatatableHelper.totalRecordsCount = this.list.length;
+        // const input = new InputPointPctDto();
+        // input.schemaID = 0;  
+        // this.list =  [ ...this.list, input];
+        // this.primengDatatableHelper.totalRecordsCount = this.list.length;
     }
 
     save(/*model: PointPercentage*/) {
-        console.log(this.list);
+        // console.log(this.list);
     }
 
     deleteRow(col: any) {
-        this.list.splice(col, 1)
-        this.list = [...this.list];
+        // this.list.splice(col, 1)
+        // this.list = [...this.list];
     }
 }
