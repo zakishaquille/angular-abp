@@ -57,6 +57,7 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
 
     @HostListener("blur", ["$event"])
     handleBlur(event: any) {
+        this.inputHandler.handleNaNValue();
         this.inputHandler.getOnModelTouched().apply(event);
     }
 
@@ -86,6 +87,11 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
         if (!this.isChromeAndroid()) {
             this.inputHandler.handleKeypress(event);
         }
+    }
+
+    @HostListener("keyup", ["$event"])
+    handleKeyup(event: any) {
+        this.inputHandler.handleNaNValue();
     }
 
     @HostListener("paste", ["$event"])

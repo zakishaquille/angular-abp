@@ -1,37 +1,61 @@
 import { AppComponentBase } from 'shared/common/app-component-base';
 
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, Injector } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: ".m-grid__item.m-grid__item--fluid.m-wrapper",
     templateUrl: "./input-mask.component.html",
     encapsulation: ViewEncapsulation.None,
 })
-export class InputMaskComponent extends AppComponentBase implements OnInit {
+export class InputMaskComponent extends AppComponentBase implements OnInit, AfterViewInit {
 
-    customDateVar: any;
+    editForm: FormGroup;
     active: boolean;
+    customDate: FormControl;
+    customPlaceholder: FormControl;
+    phoneNumber: FormControl;
+    exptyPlaceholder: FormControl;
+    repeatingMask: FormControl;
+    rightAlign: FormControl;
+    currency: FormControl;
+    ipAddress: FormControl;
+    emailAddress: FormControl;
     inputMasks: any[];
-    private input: MSInputDto;
 
     constructor(
       injector: Injector,
+      private _fb: FormBuilder,
     ) {
       super(injector)
+      this.editForm = _fb.group({
+        'customDate': [null],
+        'customPlaceholder': [null],
+        'phoneNumber': [null],
+        'exptyPlaceholder': [null],
+        'repeatingMask': [null],
+        'rightAlign': [null],
+        'currency': [null],
+        'ipAddress': [null],
+        'emailAddress': [null],
+          'decimal': [null],
+      })
       this.active = true
       this.inputMasks = []
     }
 
     ngOnInit() {
-      this.input = new MSInputDto(); //this line for init input variable
-
-      for(let i = 1 ; i <= 8 ; i++) {
+      for(let i = 1 ; i <= 9 ; i++) {
         this.inputMasks.push(eval("this.getInputMask"+i+"()"));
       }
     }
 
+    ngAfterViewInit() {
+
+    }
+
     save() {
-      console.log(this.input);
+        console.log(this.editForm.value);
     }
 
     getInputMask1() {
@@ -94,18 +118,9 @@ export class InputMaskComponent extends AppComponentBase implements OnInit {
         }
       }
     }
-}
 
-//This class is represent of DTO(for this demo only, you don't need to create this class in real development)
-class MSInputDto {
-  customDate: any;
-  customPlaceholder: any;
-  phoneNumber: any;
-  exptyPlaceholder: any;
-  repeatingMask: any;
-  rightAlign: any;
-  currency: any;
-  separatorAngka: any;
-  ipAddress: any;
-  emailAddress: any;
+    getInputMask9() {
+        return { 'alias': 'decimal', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false,
+            'placeholder': '0.00', rightAlign : true, clearMaskOnLostFocus: !1, 'autoUnmask': true, 'removeMaskOnSubmit': true};
+    }
 }

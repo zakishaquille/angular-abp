@@ -5,12 +5,26 @@ import * as _ from 'lodash';
 @Directive({
   selector: '[inputMask]',
 })
-export class InputMaskDirective {    
+export class InputMaskDirective {
     @Input('inputMask')
     mask: string;
 
     @Input('inputMaskOptions')
     options: any;
+
+    moneySeparatorMask = {prefix:'Rp. ', 'alias': 'decimal', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false,
+    'placeholder': '0.00', rightAlign : true, clearMaskOnLostFocus: !1, 'autoUnmask': true, 'removeMaskOnSubmit': true};
+
+    moneySeparatorMask2 = {
+        'alias': 'decimal',
+        'radixPoint': ',',
+        'groupSeparator': '.',
+        'autoGroup': true,
+        'digits': 0,
+        'digitsOptional': false,
+        'rightAlign': false,
+        'placeholder': '0'
+    };
 
     constructor(
         private elementRef: ElementRef,
@@ -22,12 +36,16 @@ export class InputMaskDirective {
         console.warn('No control for InputMaskDirective');
         return;
         }
-        
+
         if (this.mask) {
-            $(this.elementRef.nativeElement).inputmask(this.mask, this.options);
+            if (this.mask === 'idr') {
+                $(this.elementRef.nativeElement).inputmask(this.moneySeparatorMask2);
+            } else {
+                $(this.elementRef.nativeElement).inputmask(this.mask, this.options);
+            }
             $(this.elementRef.nativeElement).change(this.handleChange);
-        } else {
-            if(this.options) {
+        }    {
+            if (this.options) {
                 $(this.elementRef.nativeElement).inputmask(this.options);
                 $(this.elementRef.nativeElement).change(this.handleChange);
             } else {
@@ -36,7 +54,7 @@ export class InputMaskDirective {
         }
     }
 
-    private handleChange: (any) => void = (event: any):void => {
+    private handleChange: (any) => void = (event: any): void => {
         this.control.control.patchValue(this.elementRef.nativeElement.value);
     }
 

@@ -2,7 +2,7 @@ import { ElementRef, Input, OnInit, Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ValidationService } from 'app/shared/common/share/validation.service';
 
-@Component({ 
+@Component({
     selector: 'control-message',
     template: '<div class="form-control-feedback" *ngIf="errorMessage">{{errorMessage}}</div>'
 })
@@ -39,7 +39,7 @@ export class ControlMessageComponent implements OnInit {
             console.error(`ControlMessageComponent: Unable to get the FormControl from the form and the control name: ${componentName}.`);
             return;
         }
-        
+
         this.component = control as FormControl;
 
         this.component.statusChanges.subscribe((status) => {
@@ -57,7 +57,7 @@ export class ControlMessageComponent implements OnInit {
         if (labelElement) {
             labelVal = labelElement.innerText.replace(/[*]$/,'');
         }
-        
+
         if (status === 'VALID' && dirty) {
             this.errorMessage = null;
         } else if (status === 'INVALID' && dirty) {

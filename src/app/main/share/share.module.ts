@@ -6,16 +6,18 @@ import { AppCommonModule } from '@app/shared/common/app-common.module';
 import { UtilsModule } from '@shared/utils/utils.module';
 import { CountoModule } from '@node_modules/angular2-counto';
 import { EasyPieChartModule } from 'ng2modules-easypiechart';
-import { SpinnerModule } from 'primeng/primeng';
-import { EditorModule } from 'primeng/primeng';
-import { DropdownModule } from 'primeng/primeng';
-import { ButtonModule } from 'primeng/primeng';
+import { SpinnerModule, EditorModule, DropdownModule, ButtonModule } from 'primeng/primeng';
 
-import { InputMaskDirective } from "app/main/share/input-mask.directive";
-import { FormControlStyleComponent } from "app/main/share/form-control-style.component";
-import { ControlMessageComponent } from "app/main/share/control-message.component";
-import { CurrencyMaskModule } from "app/main/share/ng2-currency-mask/currency-mask.module";
-import { CurrencyMaskDirective } from "app/main/share/ng2-currency-mask/currency-mask.directive";
+import { InputMaskDirective } from "@app/main/share/input-mask.directive";
+import { FormControlStyleComponent } from "@app/main/share/form-control-style.component";
+import { ControlMessageComponent } from "@app/main/share/control-message.component";
+import { CurrencyMaskModule } from "@app/main/share/ng2-currency-mask/currency-mask.module";
+import { CurrencyMaskDirective } from "@app/main/share/ng2-currency-mask/currency-mask.directive";
+import { PriceFormatDirective } from "@app/main/share/price-format.directive";
+import { TrimValueAccessor } from "@app/main/share/trim-value-accessor.directive";
+import { UploadFileDirective } from "@app/main/share/upload-file.directive";
+import { ProjectDDLCobaComponent } from "@app/main/share/project-ddl-coba.component";
+// import { EntityComboComponent } from "@app/main/share/entity-combo-component";
 
 @NgModule({
         imports: [
@@ -31,16 +33,26 @@ import { CurrencyMaskDirective } from "app/main/share/ng2-currency-mask/currency
         ],
         declarations: [
                 InputMaskDirective,
+                PriceFormatDirective,
+                TrimValueAccessor,
+                UploadFileDirective,
 
                 FormControlStyleComponent,
                 ControlMessageComponent,
+                ProjectDDLCobaComponent,
+                // EntityComboComponent,
         ],
         exports: [
                 InputMaskDirective,
                 CurrencyMaskDirective,
+                PriceFormatDirective,
+                TrimValueAccessor,
+                UploadFileDirective,
 
                 FormControlStyleComponent,
                 ControlMessageComponent,
+                ProjectDDLCobaComponent,
+                // EntityComboComponent,
         ]
 })
 
