@@ -35,10 +35,6 @@ export class MultipleDataComponent extends AppComponentBase {
         this.list = [...this.list];
     }
 
-    cancel(): void {
-
-    }
-
     save(): void {
         console.log(this.list);
     }
