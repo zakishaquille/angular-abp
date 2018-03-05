@@ -10,9 +10,10 @@ import { SpinnerModule, EditorModule, DropdownModule, ButtonModule, DataTableMod
 import { FileSelectDirective } from 'ng2-file-upload';
 import { FileUploadModule } from 'ng2-file-upload/file-upload/file-upload.module';
 
+import { TokenService } from 'abp-ng2-module/dist/src/auth/token.service';
+import { ServiceProxyModule } from 'shared/service-proxies/service-proxy.module';
 import { RnDRoutingModule } from 'app/main/rnd/rnd-routing.module';
 import { MultipleDataComponent } from 'app/main/rnd/multiple-data/multiple-data.component';
-import { ServiceProxyModule } from 'shared/service-proxies/service-proxy.module';
 import { GetParamUrlComponent } from 'app/main/rnd/getparam-url/getparam-url.component';
 import { GetParamUrlDetailComponent } from 'app/main/rnd/getparam-url/getparam-url-detail.component';
 import { GetDataFromModalComponent } from 'app/main/rnd/get-data-from-modal/get-data-from-modal.component';
@@ -23,9 +24,7 @@ import { CleanModalModalComponent } from 'app/main/rnd/clean-modal/clean-modal-m
 import { InputMaskComponent } from 'app/main/rnd/input-mask/input-mask.component';
 import { ShareModule } from 'app/main/share/share.module';
 import { FormControlComponent } from 'app/main/rnd/form-control/form-control.component';
-
-// tolong dipisah importnya, antara component buatan, dan component template
-// komponent buatan
+import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.component';    //this component used for upload file, only worked when upload file controller exist in your web service(BE)
 
 @NgModule({
     imports: [
@@ -60,6 +59,10 @@ import { FormControlComponent } from 'app/main/rnd/form-control/form-control.com
         CleanModalModalComponent,
         InputMaskComponent,
         FormControlComponent,
+        UploadFileComponent,    //this component used for upload file, only worked when upload file controller exist in your web service(BE)
+    ],
+    providers: [
+        TokenService    //this providers needed when you use controller for upload file
     ]
 })
 export class RnDModule { }
