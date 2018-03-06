@@ -25,6 +25,7 @@ import { InputMaskComponent } from 'app/main/rnd/input-mask/input-mask.component
 import { ShareModule } from 'app/main/share/share.module';
 import { FormControlComponent } from 'app/main/rnd/form-control/form-control.component';
 import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.component';    //this component used for upload file, only worked when upload file controller exist in your web service(BE)
+import { CurrencyFormatViewComponent } from '@app/main/rnd/currency-format-view/currency-format-view.component';
 
 @NgModule({
     imports: [
@@ -59,6 +60,7 @@ import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.compo
         CleanModalModalComponent,
         InputMaskComponent,
         FormControlComponent,
+        CurrencyFormatViewComponent,
         UploadFileComponent,    //this component used for upload file, only worked when upload file controller exist in your web service(BE)
     ],
     providers: [
