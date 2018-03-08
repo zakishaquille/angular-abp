@@ -24,8 +24,9 @@ import { CleanModalModalComponent } from 'app/main/rnd/clean-modal/clean-modal-m
 import { InputMaskComponent } from 'app/main/rnd/input-mask/input-mask.component';
 import { ShareModule } from 'app/main/share/share.module';
 import { FormControlComponent } from 'app/main/rnd/form-control/form-control.component';
-import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.component';    //this component used for upload file, only worked when upload file controller exist in your web service(BE)
 import { CurrencyFormatViewComponent } from '@app/main/rnd/currency-format-view/currency-format-view.component';
+import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.component';    //this component used for upload file, only worked when upload file controller exist in your web service(BE)
+import { MsCrudComponent } from '@app/main/rnd/ms-crud/ms-crud.component';
 
 @NgModule({
     imports: [
@@ -62,6 +63,7 @@ import { CurrencyFormatViewComponent } from '@app/main/rnd/currency-format-view/
         FormControlComponent,
         CurrencyFormatViewComponent,
         UploadFileComponent,    //this component used for upload file, only worked when upload file controller exist in your web service(BE)
+        MsCrudComponent,
     ],
     providers: [
         TokenService    //this providers needed when you use controller for upload file
