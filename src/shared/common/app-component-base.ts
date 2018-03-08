@@ -90,6 +90,13 @@ export abstract class AppComponentBase {
     }
 
     //== CUSTOM FUNC =====================================
+    isEmptyValue(n): boolean {
+        if (n === undefined || n === null || n === '' || n === 0)
+            return true;
+        else
+            return false;
+    }
+
     daysBetween = function (startDate, endDate) {
         // Convert both dates to milliseconds
         var startDate_ms = startDate.getTime();
