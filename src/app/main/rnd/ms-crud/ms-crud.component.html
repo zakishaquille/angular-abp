@@ -55,7 +55,7 @@
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a *ngIf="permission.isGranted('Pages.Administration.Users.Edit')" (click)="editModal.show(record.id)">{{l('Edit')}}</a>
+                                                <a *ngIf="permission.isGranted('Pages.Administration.Users.Edit')" (click)="editModal.show(record)">{{l('Edit')}}</a>
                                             </li>
                                             <li>
                                                 <a *ngIf="permission.isGranted('Pages.Administration.Users.Delete')" (click)="deleteRecord(record)">{{l('Delete')}}</a>
@@ -91,6 +91,6 @@
             </div>
         </div>
     </div>
-    <!-- <createModal #createModal (modalSave)="getLatestList()"></createModal>
-    <editModal #editModal (modalSave)="getLatestList()"></editModal> -->
+    <createModal #createModal (modalSave)="getLatestList()"></createModal>
+    <editModal #editModal (modalSave)="getLatestList()"></editModal>
 </div>
