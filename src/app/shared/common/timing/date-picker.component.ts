@@ -1,9 +1,5 @@
-import {
-    Directive, AfterViewInit, ElementRef, ViewChild, Injector, Input, Output, EventEmitter,
-    HostListener, OnChanges
-} from '@angular/core';
+import { Directive, AfterViewInit, ElementRef, ViewChild, Injector, Input, Output, EventEmitter, HostListener, OnChanges } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
-
 import * as moment from 'moment';
 import {NgModel} from "@angular/forms";
 
@@ -12,9 +8,7 @@ import {NgModel} from "@angular/forms";
     providers: [NgModel],
 })
 export class DatePickerDirective extends AppComponentBase implements AfterViewInit {
-
     hostElement: ElementRef;
-
     _selectedDate: moment.Moment = moment().startOf('day');
     @Output() selectedDateChange = new EventEmitter();
     @Output() ngModelChange: EventEmitter<any> = new EventEmitter();
@@ -28,9 +22,8 @@ export class DatePickerDirective extends AppComponentBase implements AfterViewIn
         this._selectedDate = val;
         this.selectedDateChange.emit(this._selectedDate);
         this.setElementText(val);
-        this.ngModelChange.emit(this._selectedDate.format('YYYY-MM-DD'));
+        this.ngModelChange.emit(this._selectedDate.format('DD/MM/YYYY'));
     }
-
 
     constructor(
         injector: Injector,
@@ -43,7 +36,8 @@ export class DatePickerDirective extends AppComponentBase implements AfterViewIn
     ngAfterViewInit(): void {
         const $element = $(this.hostElement.nativeElement);
         $element.datepicker({
-            language: abp.localization.currentLanguage.name
+            language: abp.localization.currentLanguage.name,
+            format: "dd/mm/yyyy"
         }).on('changeDate', e => {
             this.selectedDate = moment(e.date);
         }).on('clearDate', e => {
@@ -54,9 +48,10 @@ export class DatePickerDirective extends AppComponentBase implements AfterViewIn
     setElementText(val: any) {
         const $element = $(this.hostElement.nativeElement);
         if (val) {
-            $element.val(moment(val).format('L'));
+            $element.val(moment(val).format('DD/MM/YYYY'));
         } else {
             $element.val('');
         }
     }
+
 }
