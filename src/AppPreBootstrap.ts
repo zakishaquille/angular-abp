@@ -53,12 +53,12 @@ export class AppPreBootstrap {
             const subdomainTenancyNameFinder = new SubdomainTenancyNameFinder();
             const tenancyName = subdomainTenancyNameFinder.getCurrentTenancyNameOrNull(result.appBaseUrl);
 
-            AppConsts.appBaseUrlFormat = result.appBaseUrl;
+            AppConsts.appBaseUrlFormat = result.getDynamicAppBaseUrl ? location.origin : result.appBaseUrl;
             AppConsts.remoteServiceBaseUrlFormat = result.remoteServiceBaseUrl;
             AppConsts.localeMappings = result.localeMappings;
 
             if (tenancyName == null) {
-                AppConsts.appBaseUrl = result.appBaseUrl.replace(AppConsts.tenancyNamePlaceHolderInUrl + '.', '');
+                AppConsts.appBaseUrl = result.getDynamicAppBaseUrl ? location.origin : result.appBaseUrl.replace(AppConsts.tenancyNamePlaceHolderInUrl + '.', '');
                 AppConsts.remoteServiceBaseUrl = result.remoteServiceBaseUrl.replace(AppConsts.tenancyNamePlaceHolderInUrl + '.', '');
             } else {
                 AppConsts.appBaseUrl = result.appBaseUrl.replace(AppConsts.tenancyNamePlaceHolderInUrl, tenancyName);
