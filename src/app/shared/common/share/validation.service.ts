@@ -20,12 +20,20 @@ export class ValidationService {
     }
 
     static emailCompleteValidator(input) {
-        let regex = new RegExp(/^[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}$/);    //only valid when: a@aa.aa
-        // let regex = new RegExp(/^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]+[A-Za-z0-9]([A-Za-z0-9-]+[A-Za-z0-9])?(\.([A-Za-z0-9-]{1,61}[A-Za-z0-9])?)*$/);    //valid: a@aa
+        let regex = new RegExp(/^([a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,})*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
             return { 'emailcomplete': true };
+        }
+    }
+
+    static numValidator(input) {
+        let regex = new RegExp(/^[0-9]*$/);
+        if (regex.test(input.value)) {
+            return null;
+        } else {
+            return { 'num': true };
         }
     }
 
@@ -56,21 +64,8 @@ export class ValidationService {
         }
     }
 
-    static numValidator(input) {
-        let regex = new RegExp(/^[0-9]*$/);
-        if (regex.test(input.value)) {
-            return null;
-        } else {
-            return { 'num': true };
-        }
-    }
-
-    static nanValidator(input){
-        return isNaN(input.value)? {'nan':true}:null
-    }
-
     static faxValidator(input) {
-        let regex = new RegExp(/^(\+?\d{1,}(\-?)\d*(\-?)\(?\d{2,}\)?(\-?)\d{3,}\d{3,})$/);
+        let regex = new RegExp(/^(\+?\d{1,}(\-?)\d*(\-?)\(?\d{2,}\)?(\-?)\d{3,}\d{3,})*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
