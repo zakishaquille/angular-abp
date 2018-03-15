@@ -36,6 +36,7 @@ export class FormControlStyleComponent implements AfterViewInit, AfterContentIni
 
     ngAfterViewInit(): void {
         let componentName: string;
+        let isInputMask;
 
         this.inputElement = null;
         if (this.formComponent !== '') {
@@ -45,6 +46,7 @@ export class FormControlStyleComponent implements AfterViewInit, AfterContentIni
         }
         if (this.inputElement) {
             componentName = this.inputElement.getAttribute('formControlName');
+            isInputMask = this.inputElement.getAttribute('inputMask');
         }
         if (!componentName) {
             console.error('FormControlStyleComponent: Unable to get the control name. Is the formControlName attribute set correctly?');
@@ -59,6 +61,7 @@ export class FormControlStyleComponent implements AfterViewInit, AfterContentIni
         this.component = control as FormControl;
 
         this.component.statusChanges.subscribe((status) => {
+            if(isInputMask !== undefined) this.component.markAsDirty();
             this.onStatusChange(status, this.component.dirty);
         });
         this.onStatusChange(this.component.status, this.component.dirty);
