@@ -20,7 +20,7 @@ export class ValidationService {
     }
 
     static emailCompleteValidator(input) {
-        let regex = new RegExp(/^([a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,})*$/);
+        let regex = new RegExp(/^\-$|^([a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,})*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
@@ -29,7 +29,7 @@ export class ValidationService {
     }
 
     static numValidator(input) {
-        let regex = new RegExp(/^[0-9]*$/);
+        let regex = new RegExp(/^\-$|^[0-9]*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
@@ -38,7 +38,7 @@ export class ValidationService {
     }
 
     static alphaNumAddressValidator(input) {
-        let regex = new RegExp(/^[a-zA-Z0-9-.\/]+( [a-zA-Z0-9-.\/]+)*$/);
+        let regex = new RegExp(/^\-$|^[a-zA-Z0-9-.\/]+( [a-zA-Z0-9-.\/]+)*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
@@ -47,7 +47,7 @@ export class ValidationService {
     }
 
     static alphaNumValidator(input) {
-        let regex = new RegExp(/^[a-zA-Z0-9]+( [a-zA-Z0-9]+)*$/);
+        let regex = new RegExp(/^\-$|^[a-zA-Z0-9]+( [a-zA-Z0-9]+)*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
@@ -56,7 +56,7 @@ export class ValidationService {
     }
 
     static alphaValidator(input) {
-        let regex = new RegExp(/^[a-zA-Z]+( [a-zA-Z]+)*$/);
+        let regex = new RegExp(/^\-$|^[a-zA-Z]+( [a-zA-Z]+)*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
@@ -65,11 +65,12 @@ export class ValidationService {
     }
 
     static faxValidator(input) {
-        let regex = new RegExp(/^(\+?\d{1,}(\-?)\d*(\-?)\(?\d{2,}\)?(\-?)\d{3,}\d{3,})*$/);
+        let regex = new RegExp(/^\-$|^(\+?\d{1,}(\-?)\d*(\-?)\(?\d{2,}\)?(\-?)\d{3,}\d{3,})*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
             return { 'fax': true };
         }
     }
+    
 }
