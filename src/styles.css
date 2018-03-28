@@ -80,3 +80,8 @@
 .swal-footer {
     text-align: center;
 }
+
+/* ============ Overrides Style ============ */
+ul.dropdown-menu.inner{
+    max-height: 30vh !important;
+}
