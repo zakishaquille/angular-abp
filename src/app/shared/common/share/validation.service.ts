@@ -21,7 +21,7 @@ export class ValidationService {
 
     static emailCompleteValidator(input) {
         let regex = new RegExp(/^\-$|^([a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,})*$/);
-        if (regex.test(input.value)) {
+        if (regex.test(input.value) || input.value == null || input.value == '') {
             return null;
         } else {
             return { 'emailcomplete': true };
@@ -30,7 +30,7 @@ export class ValidationService {
 
     static numValidator(input) {
         let regex = new RegExp(/^\-$|^[0-9]*$/);
-        if (regex.test(input.value)) {
+        if (regex.test(input.value) || input.value == null || input.value == '') {
             return null;
         } else {
             return { 'num': true };
@@ -39,7 +39,7 @@ export class ValidationService {
 
     static alphaNumAddressValidator(input) {
         let regex = new RegExp(/^\-$|^[a-zA-Z0-9-.\/]+( [a-zA-Z0-9-.\/]+)*$/);
-        if (regex.test(input.value)) {
+        if (regex.test(input.value) || input.value == null || input.value == '') {
             return null;
         } else {
             return { 'alphanumaddr': true };
@@ -48,7 +48,7 @@ export class ValidationService {
 
     static alphaNumValidator(input) {
         let regex = new RegExp(/^\-$|^[a-zA-Z0-9]+( [a-zA-Z0-9]+)*$/);
-        if (regex.test(input.value)) {
+        if (regex.test(input.value) || input.value == null || input.value == '') {
             return null;
         } else {
             return { 'alphanum': true };
@@ -57,7 +57,7 @@ export class ValidationService {
 
     static alphaValidator(input) {
         let regex = new RegExp(/^\-$|^[a-zA-Z]+( [a-zA-Z]+)*$/);
-        if (regex.test(input.value)) {
+        if (regex.test(input.value) || input.value == null || input.value == '') {
             return null;
         } else {
             return { 'alpha': true };
@@ -66,7 +66,7 @@ export class ValidationService {
 
     static faxValidator(input) {
         let regex = new RegExp(/^\-$|^(\+?\d{1,}(\-?)\d*(\-?)\(?\d{2,}\)?(\-?)\d{3,}\d{3,})*$/);
-        if (regex.test(input.value)) {
+        if (regex.test(input.value) || input.value == null || input.value == '') {
             return null;
         } else {
             return { 'fax': true };
