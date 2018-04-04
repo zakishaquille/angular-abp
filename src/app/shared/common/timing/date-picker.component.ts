@@ -6,6 +6,7 @@ import {NgModel, NgControl} from "@angular/forms";
 @Directive({
     selector: '[datePicker]',
     providers: [NgModel],
+    exportAs: 'datepickerdirective'
 })
 export class DatePickerDirective extends AppComponentBase implements AfterViewInit {
     datetimeFormat: string = 'DD/MM/YYYY hh:mm:ss A';
@@ -15,6 +16,7 @@ export class DatePickerDirective extends AppComponentBase implements AfterViewIn
     @Output() selectedDateChange = new EventEmitter();
     @Output() ngModelChange: EventEmitter<any> = new EventEmitter();
 
+    @Input() ngModel: any;
     @Input('dateType') private dateType = '';
     @Input()
     get selectedDate() {
@@ -58,6 +60,11 @@ export class DatePickerDirective extends AppComponentBase implements AfterViewIn
                 this.selectedDate = null;
             });
         }
+    }
+
+    refreshDatePicker(): void {
+        const $element = $(this.hostElement.nativeElement);
+        $element.datepicker("update", this.strToDate(this.ngModel));
     }
 
     private handleChange: (any) => void = (event: any):void => {

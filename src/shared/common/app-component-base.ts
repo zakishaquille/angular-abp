@@ -124,7 +124,7 @@ export abstract class AppComponentBase {
     }
 
     //NOTE: This method only cover date with / or - separator
-    strToMoment(date: string, format: string = 'dd/mm/yyyy', isDatetime: boolean = false): Moment {
+    strToDate(date: string, format: string = 'dd/mm/yyyy', isDatetime: boolean = false): Date {
         let separator = date.indexOf('-') != -1 ? '-' : '/';
         let splitDate: string[];
         let formattedDate: Date;
@@ -145,7 +145,12 @@ export abstract class AppComponentBase {
         else
             formattedDate = new Date(splitDate[0]+'-'+splitDate[1]+'-'+splitDate[2]+splitTime);
 
-        let dateInput = moment(formattedDate);
+        return formattedDate;
+    }
+
+    //NOTE: This method only cover date with / or - separator
+    strToMoment(date: string, format: string = 'dd/mm/yyyy', isDatetime: boolean = false): Moment {
+        let dateInput = moment(this.strToDate(date, format, isDatetime));
         return dateInput;
     }
 
