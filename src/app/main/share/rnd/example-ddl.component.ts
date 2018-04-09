@@ -15,7 +15,6 @@ export class ExampleDdlComponent extends BaseDropDownListComponent implements Af
     labelField = 'displayName';
     valueField = 'id';
     isLoading = true;
-    objectAsData = true;
 
     constructor(
         private _roleService: RoleServiceProxy,
@@ -27,7 +26,15 @@ export class ExampleDdlComponent extends BaseDropDownListComponent implements Af
         this.setDropdownElement(this.el);
     }
 
-    retrieveByInput() {
-        this.listResult = this._roleService.getRoles(undefined); //put params here
-    }
+    //CHANGE: Uncommented retrieveByInput() method if you use param for request service
+    // retrieveByInput() {
+        // if(this.input != undefined && this.input != '')
+        // {
+        //     this.listResult = this._msClusterService.getMsClusterDropdownPerProject(this.input);
+        // }
+        // else {
+        //     this.listResult = undefined;
+        //     this.loadAllData();
+        // }
+    // }
 }
