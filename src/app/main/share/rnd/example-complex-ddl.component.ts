@@ -56,13 +56,12 @@ export class ExampleComplexDdlComponent extends AppComponentBase implements Cont
         super(injector);
     }
 
+    //CHANGE: Adjust this method to your service
     ngOnInit(): void {
-        this._roleService.getRoles(undefined).subscribe(result => {
+        this._roleService.getRoles(undefined)
+        .finally(() => this.refreshAll())
+        .subscribe(result => {
             this.valueList = result.items;
-            this.refreshAll();
-        }, err => {
-            console.error("ExampleComplexDdlComponent: request service roleService.getRoles()");
-            this.refreshAll();
         });
     }
 
