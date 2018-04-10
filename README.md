@@ -24,6 +24,7 @@ Framework yang terdapat disini berasal dari [aspnetzero](https://www.aspnetzero.
 
 ### Registering Service Module
 - Saat ada penambahan service baru, kita harus mendaftarkannya di **src/shared/service-proxies/service-proxy.module.ts** pada array providers.
+
 ```typescript
 @NgModule({
     providers: [
@@ -34,7 +35,8 @@ Framework yang terdapat disini berasal dari [aspnetzero](https://www.aspnetzero.
     ]
 })
 ```
-    Langkah ini hanya diperlukan saat ada class service(file) baru ditambahkan, jika hanya ada perubahan pada service yang sudah pernah didaftarkan maka tidak perlu dilakukan lagi.
+
+>Langkah ini hanya diperlukan saat ada class service(file) baru ditambahkan, jika hanya ada perubahan pada service yang sudah pernah didaftarkan maka tidak perlu dilakukan lagi.
 
 ## II. Shared Component/Directive
 - *Shared component*, suatu komponen yang dipecah menjadi bagian sendiri agar dapat digunakan dibeberapa tempat sekaligus. 
@@ -56,6 +58,7 @@ Contoh: datepicker, masking phone number input, format currency.
 - Contoh yg service dengan parameter di **src/app/main/share/rnd/example-lang-ddl.component.ts**
 
 Params:
+
 Nama            | Place     | Type          | Nilai default     | Fungsi
 ----------------|-----------|---------------|-------------------|------------------------------------
 input           | HTML/TS   | String/Array  |                   | Untuk parameter request service. Gunakan array jika parameter lebih dari satu
