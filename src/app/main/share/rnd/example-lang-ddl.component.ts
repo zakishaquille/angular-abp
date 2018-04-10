@@ -27,10 +27,10 @@ export class ExampleLangDdlComponent extends BaseDropDownListComponent implement
         this.setDropdownElement(this.el);
     }
 
-    //CHANGE: Uncommented retrieveByInput() method if you use param for request service
     retrieveByInput() {
         if(this.input != undefined && this.input != '')
         {
+            //CHANGE: adjust this line with your service
             this.listResult = this._languageService.getLanguageForEdit(this.input);
         }
         else {

@@ -30,7 +30,7 @@ export class ExampleDdlComponent extends BaseDropDownListComponent implements Af
     // retrieveByInput() {
         // if(this.input != undefined && this.input != '')
         // {
-        //     this.listResult = this._msClusterService.getMsClusterDropdownPerProject(this.input);
+        //     this.listResult = this._roleService.getRoles(this.input);
         // }
         // else {
         //     this.listResult = undefined;
