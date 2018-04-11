@@ -65,7 +65,7 @@ input           | HTML/TS   | String/Array  |                   | Untuk paramete
 isDisabled      | HTML/TS   | boolean       | false             | Untuk men-disable dropdown
 emptyValueText  | HTML/TS   | String        | Nothing Selected  | Nilai yang tampil saat value kosong
 labelField      | TS        | String/Array  |                   | Key field json yg ditampilkan. Jika array maka ditampilkan dengan separator dash( - ). Misal: "Adams - Manager"
-valueField      | TS        | String/Array  |                   | Key field json sebagai value. Jika array maka disimpan dengan separator pipe( \| ). Misal: "Adams\|Manager"
+valueField      | TS        | String/Array  |                   | Key field json sebagai value. Jika array maka disimpan dengan separator pipe( &#124; ). Misal: "Adams&#124;Manager"
 listResult      | TS        | any           |                   | Service get data dropdown
 
 #### Custom DDL Version
