@@ -71,3 +71,36 @@ listResult      | TS        | any           |                   | Service get da
 #### Custom DDL Version
 - Gunakan versi ini saat hasil request service masih perlu diolah atau data tidak persis dibawah key result/result.items pada json
 - Contoh di **src/app/main/share/rnd/example-complex-ddl.component.ts**
+- Hanya edit pada bagian :
+
+Method OnInit (request service)
+
+```typescript
+//CHANGE: Adjust this method to your service
+ngOnInit(): void {
+    this._roleService.getRoles(undefined)
+    .finally(() => this.refreshAll())
+    .subscribe(result => {
+        this.valueList = result.items;
+    });
+}
+```
+
+Template HTML Component:
+- Ganti selector component
+- Key pada json untuk ngValue
+- Key pada json untuk nilai yg ditampilkan
+
+```typescript
+@Component({
+    selector: 'example-complex-ddl',
+    template: `<select #DropdownList
+                    class="form-control"
+                    [(ngModel)]="inputValue"
+                    [attr.data-live-search]="true">
+                    <option [ngValue]="undefined">{{l('NothingSelected')}}</option>
+                    <option *ngFor="let a of valueList" [ngValue]="a.id">{{a.displayName}}</option>
+                </select>`,
+    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+})
+```
