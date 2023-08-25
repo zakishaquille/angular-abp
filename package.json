@@ -31,7 +31,7 @@
         "autosize": "^4.0.0",
         "block-ui": "^2.70.1",
         "blueimp-file-upload": "^9.19.1",
-        "bootstrap": "v4.0.0-beta",
+        "bootstrap": "v4.0.0-beta.2",
         "bootstrap-datepicker": "^1.7.1",
         "bootstrap-daterangepicker": "^2.1.25",
         "bootstrap-hover-dropdown": "^2.2.1",
